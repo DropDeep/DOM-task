@@ -25,29 +25,35 @@ const movieDB = {
 };
 
 // 1)
-const ads = document.querySelector('.promo__adv').remove();
+const ads = document.querySelectorAll('.promo__adv img'),
+      promoBg = document.querySelector('.promo__bg'),
+      genre = promoBg.querySelector('.promo__genre'),
+      filmContent = document.querySelector(".promo__interactive-list");
+    //   listOfFilms = filmContent.getElementsByTagName('li');
+  
+ ads.forEach(img => {
+    img.remove();
+});
 
+genre.textContent = 'драма';
 
-// 2)
-const genre = document.querySelector('.promo__genre');
+promoBg.style.backgroundImage = 'url("/img/bg.jpg")';
 
-genre.childNodes[0].textContent = 'драма';
-
-// 3)
-
-const promoBg = document.querySelector('.promo__bg');
-
-promoBg.style.background = 'url("../img/bg.jpg")';
-
-// 4)
-const filmContent = document.querySelector(".promo__interactive-list"),
-    listOfFilms = filmContent.getElementsByTagName('li');
+filmContent.innerHTML = '';
 
 movieDB.movies.sort();
 
-for (let i =0; i<listOfFilms.length; i++) {
-    listOfFilms[i].textContent = `${i + 1} - ${movieDB.movies[i]}`; 
-}
+movieDB.movies.forEach((film, i) => {
+    filmContent.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} - ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
+
+// for (let i = 0; i < listOfFilms.length; i++) {
+//     listOfFilms[i].textContent = `${i + 1} - ${movieDB.movies[i]}`; 
+// }
 
 // 5)
 // done in 4th
