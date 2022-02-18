@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -90,5 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteAdv(adv);
     makeChanges();
     createMovieList(movieDB.movies, movieList);
+
+    console.log("test");
 
 });
